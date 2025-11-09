@@ -1,0 +1,195 @@
+/* ============================
+   🌿 Custom Dark Theme: Pranay Gottimukula
+   ============================ */
+
+:root {
+  --brand-green: #00a055;
+  --brand-green-hover: #00c46a;
+
+  /* GitHub-inspired dark palette */
+  --brand-bg: #0d1117;             /* Main background */
+  --brand-bg-secondary: #161b22;   /* Section/Card background */
+  --brand-bg-tertiary: #21262d;    /* Hover/Elevated */
+  --brand-navbar: #06090f;         /* Navbar background (darker than main) */
+  --brand-border: #21262d;         /* Navbar border */
+  --brand-text: #c9d1d9;           /* Main text */
+  --brand-muted: #8b949e;          /* Secondary text */
+  --border-color: #30363d;         /* Subtle outlines */
+
+  --primary: var(--brand-green);
+  --primary-hover: var(--brand-green-hover);
+  --primary-focus: rgba(0, 196, 106, 0.25);
+  --primary-inverse: var(--brand-text);
+}
+
+/* ============================
+   Base + Typography
+   ============================ */
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for fixed navbar */
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+  line-height: 1.7;
+  font-weight: 400;
+  padding-top: 70px; /* Space for fixed navbar */
+}
+
+h1, h2, h3 {
+  color: var(--brand-text);
+  margin-bottom: 0.5rem;
+}
+
+section h2 {
+  position: relative;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 60px;
+  background-color: var(--brand-green);
+  border-radius: 2px;
+}
+
+p, a, li {
+  font-size: 1.1rem;
+}
+
+/* ============================
+   Navbar (GitHub-like)
+   ============================ */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: var(--brand-navbar);
+  border-bottom: 1px solid var(--brand-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  opacity: 1 !important; /* ensure no accidental transparency */
+}
+
+/* Hide navbar on scroll down, show on scroll up */
+header.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+header.navbar-visible {
+  transform: translateY(0);
+}
+
+/* remove any blur / transparency */
+header,
+header * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* fix internal spacing */
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* remove any white line artifact */
+header::before,
+header::after {
+  content: none !important;
+}
+
+/* profile image in navbar */
+header .profile-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--brand-border);
+  transition: border-color 0.2s ease;
+}
+
+header .profile-image:hover {
+  border-color: var(--brand-green);
+}
+
+/* nav links */
+.nav-link {
+  color: var(--brand-text);
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: var(--brand-green-hover);
+}
+
+/* contact button */
+header .bg-brand {
+  background-color: var(--brand-green);
+  color: var(--brand-text);
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+header .bg-brand:hover {
+  background-color: var(--brand-green-hover);
+}
+
+/* ============================
+   Buttons
+   ============================ */
+button,
+[role="button"],
+a[role="button"] {
+  background-color: var(--brand-green) !important;
+  color: var(--brand-text) !important;
+  border: 1px solid var(--brand-green);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+button:hover,
+[role="button"]:hover,
+a[role="button"]:hover {
+  background-color: var(--brand-green-hover) !important;
+  box-shadow: 0 0 6px rgba(0, 181, 78, 0.3);
+}
+
+/* ============================
+   Project Cards
+   ============================ */
+.project-card {
+  background-color: var(--brand-bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.project-card:hover {
+  background-color: var(--brand-bg-tertiary);
+  transform: translateY(-3px);
+}
+
+/* ============================
+   Footer
+   ============================ */
+footer {
+  color: var(--brand-muted);
+  font-size: 1rem;
+}
+footer a {
+  color: var(--brand-green);
+}
+footer a:hover {
+  color: var(--brand-green-hover);
+}

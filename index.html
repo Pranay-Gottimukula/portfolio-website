@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranay Gottimukula | Portfolio</title>
+
+  <!-- ✅ TailwindCSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#00a055',
+            'brand-hover': '#00c46a',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- 🌿 PicoCSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+  <!-- 💅 Custom CSS -->
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body class="bg-[var(--brand-bg)] text-[var(--brand-text)]">
+  <!-- =========================
+       Header (GitHub-style)
+  ========================== -->
+  <header class="w-full fixed top-0 z-50 bg-[var(--brand-navbar)] border-b border-[var(--brand-border)] navbar-visible">
+    <div class="container flex items-center justify-between py-2">
+      <!-- ✅ Profile Image -->
+      <a href="#hero" class="flex items-center">
+        <img src="images/profile.jpg" alt="Pranay Gottimukula" class="profile-image">
+      </a>
+  
+      <nav>
+        <ul class="flex items-center gap-6">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li>
+            <a href="#contact"
+               class="bg-brand text-white px-4 py-1.5 rounded-md font-medium hover:bg-brand-hover transition-all duration-200 border border-brand/30">
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================
+       Main Content
+  ========================== -->
+  <main class="container px-4 md:px-6">
+    <!-- Hero Section -->
+    <section id="hero" class="py-24 text-left">
+      <h1 class="text-5xl font-bold mb-6 leading-tight">
+        Hi, I’m <span class="highlight">Pranay Gottimukula</span>
+      </h1>
+      <p class="text-lg text-[var(--brand-muted)] max-w-2xl mb-8 leading-relaxed">
+        I’m a <strong>Web Developer</strong> passionate about crafting clean, responsive, and user-friendly experiences.
+      </p>
+      <a href="#projects" role="button" class="px-6 py-3 text-base">View My Work</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[var(--brand-bg-secondary)] rounded-2xl px-6">
+      <h2 class="text-3xl font-semibold mb-6">About Me</h2>
+      <p class="text-lg text-[var(--brand-text)] leading-relaxed max-w-3xl">
+        Write a short intro about who you are, your skills, and what excites you about web development. 
+        Keep it concise, focused on what makes you unique and passionate about building on the web.
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+      <h2 class="text-3xl font-semibold mb-10">Projects</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <article class="project-card p-6 rounded-xl">
+          <h3 class="text-2xl mb-2">Crypto Currency Tracker</h3>
+          <p class="text-base mb-4 text-[var(--brand-muted)]">This is a real time crypto currency changes tracking website compatibile in all platforms.
+Vite, React and Tailwind CSS were used to make this project.</p>
+          <a href="https://github.com/Pranay-Gottimukula/Crypto-Track" target="_blank" class="text-brand hover:text-brand-hover">View Project →</a>
+        </article>
+
+        <article class="project-card p-6 rounded-xl">
+          <h3 class="text-2xl mb-2">Todo List</h3>
+          <p class="text-base mb-4 text-[var(--brand-muted)]">A responsive and minimal To-Do List application built with React. It allows you to add, edit, mark as completed, and delete tasks, with persistence using localStorage.</p>
+          <a href="https://github.com/Pranay-Gottimukula/Todo-List" target="_blank" class="text-brand hover:text-brand-hover">View Project →</a>
+        </article>
+        <article class="project-card p-6 rounded-xl">
+          <h3 class="text-2xl mb-2">Crypto Currency Tracker</h3>
+          <p class="text-base mb-4 text-[var(--brand-muted)]">This is a real time crypto currency changes tracking website compatibile in all platforms.
+Vite, React and Tailwind CSS were used to make this project.</p>
+          <a href="https://github.com/Pranay-Gottimukula/Crypto-Track" target="_blank" class="text-brand hover:text-brand-hover">View Project →</a>
+        </article>
+
+        <article class="project-card p-6 rounded-xl">
+          <h3 class="text-2xl mb-2">Todo List</h3>
+          <p class="text-base mb-4 text-[var(--brand-muted)]">A responsive and minimal To-Do List application built with React. It allows you to add, edit, mark as completed, and delete tasks, with persistence using localStorage.</p>
+          <a href="https://github.com/Pranay-Gottimukula/Todo-List" target="_blank" class="text-brand hover:text-brand-hover">View Project →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================
+       Footer
+  ========================== -->
+  <footer class="mt-24 py-12 px-6 bg-[var(--brand-bg-secondary)] border-t border-[var(--brand-bg-tertiary)] text-[var(--brand-muted)]">
+    <div class="container">
+      <h2 class="text-brand text-lg mb-3">Contact</h2>
+      <p class="mb-4 text-[var(--brand-muted)]">If you’d like to connect, feel free to reach out:</p>
+      <ul class="contact-list mb-6 space-y-1">
+        <li><strong>Email:</strong> <a href="mailto:pranaygottimukula@gmail.com" class="text-brand">pranaygottimukula@gmail.com</a></li>
+        <li><strong>Phone:</strong> <a href="tel:+911234567890" class="text-brand">+91 12345 67890</a></li>
+        <li><strong>Location:</strong> Hyderabad, India</li>
+      </ul>
+      <div class="social-links flex gap-4 mt-4">
+        <a href="https://github.com/Pranay-Gottimukula" target="_blank">🐙 GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank">💼 LinkedIn</a>
+        <a href="https://twitter.com/yourusername" target="_blank">🐦 Twitter</a>
+      </div>
+      <small class="block mt-8 text-xs text-[var(--brand-muted)]">
+        © 2025 Pranay Gottimukula.
+      </small>
+    </div>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
