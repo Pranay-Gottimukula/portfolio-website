@@ -19,19 +19,7 @@
   --primary: var(--brand-green);
   --primary-hover: var(--brand-green-hover);
   --primary-focus: rgba(0, 196, 106, 0.25);
-  --primary-inverse: var(--brand-text);/* Hide shadow effects on mobile to remove line */
-  /*
-  @media (max-width: 767px) {
-    header::before,
-    header::after {
-      display: none;
-    }
-    
-    header {
-      border-bottom: 1px solid var(--brand-border);
-    }
-  }
-  */
+  --primary-inverse: var(--brand-text);
 }
 
 /* ============================
@@ -177,6 +165,19 @@ header::before {
   z-index: 0;
 }
 
+/* Hide shadow effects on mobile to remove line 
+@media (max-width: 767px) {
+  header::before,
+  header::after {
+    display: none;
+  }
+  
+  header {
+    border-bottom: 1px solid var(--brand-border);
+  }
+}
+*/
+
 /* Hide navbar on scroll down, show on scroll up */
 header.navbar-hidden {
   transform: translateY(-100%);
@@ -202,7 +203,7 @@ header * {
   align-items: center;
   width: 36px;
   height: 36px;
-  background-color: rgba(22, 27, 34, 0.8); /* Lighter black background */
+  background-color: var(--brand-bg-secondary); /* Secondary background color */
   border: 1.5px solid var(--brand-green); /* Green outline */
   border-radius: 6px;
   cursor: pointer;
@@ -212,12 +213,12 @@ header * {
 }
 
 .mobile-menu-button:hover {
-  background-color: rgba(22, 27, 34, 1);
-  border-color: var(--brand-green-hover);
+  background-color: var(--brand-bg-tertiary);
+  border-color: var(--brand-green);
 }
 
 .mobile-menu-button[aria-expanded="true"] {
-  background-color: rgba(22, 27, 34, 1);
+  background-color: var(--brand-bg-tertiary);
   border-color: var(--brand-green);
 }
 
@@ -352,6 +353,40 @@ header * {
   }
 }
 
+/* Hero profile image wrapper */
+.hero-profile-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Gradient shadow effect using pseudo-element - top left (high) to bottom right (zero) */
+/* Hidden by default, only visible on hover */
+.hero-profile-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  border-radius: 50%;
+  background: 
+    radial-gradient(
+      ellipse 180% 180% at 10% 10%,
+      rgba(0, 160, 85, 0.5) 0%,
+      rgba(0, 160, 85, 0.4) 15%,
+      rgba(0, 160, 85, 0.3) 30%,
+      rgba(0, 160, 85, 0.2) 50%,
+      rgba(0, 160, 85, 0.1) 70%,
+      rgba(0, 160, 85, 0.05) 85%,
+      transparent 100%
+    );
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(25px);
+  opacity: 0;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
 /* Hero profile image */
 .hero-profile-image {
   height: 250px;
@@ -361,12 +396,21 @@ header * {
   object-fit: cover;
   border: 4px solid var(--brand-border);
   transition: border-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+  /* Subtle default shadow for depth */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-profile-image:hover {
   border-color: var(--brand-green);
   transform: scale(1.05);
+}
+
+/* Show shadow effect on hover */
+.hero-profile-image-wrapper:hover::before {
+  opacity: 1;
+  filter: blur(30px);
 }
 
 /* ============================
@@ -403,6 +447,18 @@ header * {
     height: 180px;
     width: 180px;
     margin: 0 auto;
+  }
+
+  .hero-profile-image-wrapper::before {
+    top: -25px;
+    left: -25px;
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+    filter: blur(20px);
+  }
+
+  .hero-profile-image-wrapper:hover::before {
+    filter: blur(25px);
   }
 
   /* Section headings */
@@ -575,6 +631,18 @@ header * {
   .hero-profile-image {
     height: 150px;
     width: 150px;
+  }
+
+  .hero-profile-image-wrapper::before {
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    filter: blur(18px);
+  }
+
+  .hero-profile-image-wrapper:hover::before {
+    filter: blur(22px);
   }
 
   section h2 {
