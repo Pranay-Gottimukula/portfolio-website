@@ -1,12 +1,8 @@
-/* ============================
-   🌿 Custom Dark Theme: Pranay Gottimukula
-   ============================ */
 
 :root {
   --brand-green: #00a055;
   --brand-green-hover: #00c46a;
 
-  /* GitHub-inspired dark palette */
   --brand-bg: #0d1117;             /* Main background */
   --brand-bg-secondary: #161b22;   /* Section/Card background */
   --brand-bg-tertiary: #21262d;    /* Hover/Elevated */
@@ -19,19 +15,6 @@
   --primary: var(--brand-green);
   --primary-hover: var(--brand-green-hover);
   --primary-focus: rgba(0, 196, 106, 0.25);
-  --primary-inverse: var(--brand-text);/* Hide shadow effects on mobile to remove line */
-  /*
-  @media (max-width: 767px) {
-    header::before,
-    header::after {
-      display: none;
-    }
-    
-    header {
-      border-bottom: 1px solid var(--brand-border);
-    }
-  }
-  */
 }
 
 /* ============================
@@ -118,7 +101,7 @@ p, a, li {
 }
 
 /* ============================
-   Navbar (GitHub-like)
+   Navbar
    ============================ */
 header {
   position: fixed;
@@ -132,7 +115,7 @@ header {
   opacity: 1 !important; /* ensure no accidental transparency */
   padding: 1rem 0; /* Increased navbar padding */
   min-height: 70px; /* Increased navbar height */
-  box-shadow: none; /* Remove default shadow, we'll add custom one */
+  box-shadow: none; /* Remove default shadow */
 }
 
 /* Gradient shadow effect - only below navbar, left to right fade */
@@ -202,8 +185,8 @@ header * {
   align-items: center;
   width: 36px;
   height: 36px;
-  background-color: rgba(22, 27, 34, 0.8); /* Lighter black background */
-  border: 1.5px solid var(--brand-green); /* Green outline */
+  background-color: var(--brand-bg-secondary) !important; /* Lighter black background */
+  border: 1.5px solid var(--brand-bg-tertiary);
   border-radius: 6px;
   cursor: pointer;
   padding: 8px 6px;
@@ -212,8 +195,8 @@ header * {
 }
 
 .mobile-menu-button:hover {
-  background-color: rgba(22, 27, 34, 1);
-  border-color: var(--brand-green-hover);
+  background-color: var(--brand-bg-secondary) !important;
+/*  border-color: var(--brand-green-hover) !important; */
 }
 
 .mobile-menu-button[aria-expanded="true"] {
@@ -224,7 +207,7 @@ header * {
 .hamburger-line {
   width: 18px; /* Smaller width */
   height: 2px; /* Smaller height */
-  background-color: var(--brand-text);
+  background-color: var(--brand-green);
   border-radius: 1px;
   transition: all 0.3s ease;
   transform-origin: center;
@@ -232,7 +215,7 @@ header * {
 
 .mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
-  background-color: var(--brand-text);
+  background-color: var(--brand-green-hover);
 }
 
 .mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(2) {
@@ -241,7 +224,7 @@ header * {
 
 .mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
-  background-color: var(--brand-text);
+  background-color: var(--brand-green-hover);
 }
 
 /* Navigation Menu */
@@ -278,27 +261,44 @@ header * {
   .nav-menu ul {
     flex-direction: column;
     padding: 1rem;
+    width: 100%;
     gap: 0.5rem;
   }
 
   .nav-menu li {
     width: 100%;
+    list-style: none;
   }
-
+  
   .nav-link {
+    color: var(--brand-text);
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
     display: block;
+    width: 100%;
+    text-align: left;
     padding: 0.75rem 1rem;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
   }
-
+  
   .nav-link::after {
-    display: none; /* Hide underline animation on mobile */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--brand-green);
+    transition: width 0.3s ease;
   }
-
+  
   .nav-link:hover {
-    background-color: var(--brand-bg-secondary);
     color: var(--brand-green-hover);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
   }
 }
 
@@ -366,6 +366,7 @@ header * {
 
 .hero-profile-image:hover {
   border-color: var(--brand-green);
+  box-shadow: 0 4px 20px #00c4694f;
   transform: scale(1.05);
 }
 
