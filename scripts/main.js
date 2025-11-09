@@ -9,9 +9,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Mobile menu toggle
+  const mobileMenuButton = document.querySelector(".mobile-menu-button");
+  const navMenu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  if (mobileMenuButton && navMenu) {
+    mobileMenuButton.addEventListener("click", () => {
+      const isExpanded = mobileMenuButton.getAttribute("aria-expanded") === "true";
+      mobileMenuButton.setAttribute("aria-expanded", !isExpanded);
+      navMenu.classList.toggle("active");
+    });
+
+    // Close mobile menu when clicking on a link
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+        navMenu.classList.remove("active");
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!navMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+        navMenu.classList.remove("active");
+      }
+    });
+  }
+
   // Smooth scroll with offset for navbar links
-  const navLinks = document.querySelectorAll('a[href^="#"]');
-  navLinks.forEach(link => {
+  const allNavLinks = document.querySelectorAll('a[href^="#"]');
+  allNavLinks.forEach(link => {
     link.addEventListener("click", (e) => {
       const href = link.getAttribute("href");
       if (href === "#" || href === "") return;
@@ -21,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (targetElement) {
         e.preventDefault();
-        const headerHeight = 70; // Height of navbar
+        const headerHeight = window.innerWidth <= 768 ? 70 : 80;
         const targetPosition = targetElement.offsetTop - headerHeight;
         
         window.scrollTo({
@@ -42,6 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Only trigger if scrolled more than threshold
     if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) {
+      return;
+    }
+
+    // Don't hide navbar on mobile if menu is open
+    if (window.innerWidth <= 767 && navMenu && navMenu.classList.contains("active")) {
       return;
     }
 
